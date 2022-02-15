@@ -9,8 +9,8 @@ const reverseString = (value) => {
   console.log(value.split("").reverse().join(""));
 };
 
-const handleName = (fName, callBack) => {
-  const fullName = `${fName} M`;
+const handleName = (firstName, callBack) => {
+  const fullName = `${firstName} M`;
   callBack(fullName);
 };
 

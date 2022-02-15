@@ -8,6 +8,35 @@
   </head>
   <body>
     <h1>Promises</h1>
+    <h2 class="first">First</h2>
+    <h2 class="second">Second</h2>
+    <h2 class="third">Third</h2>
+    <button class="btn">Click mee</button>
     <script src="./promises.js"></script>
+    <script>
+      const btn = document.querySelector(".btn");
+
+      btn.addEventListener("click", () => {
+        addColour(1000, ".first", "red")
+          .then(() => addColour(3000, ".second", "blue"))
+          .then(() => addColour(2000, ".third", "green"))
+          .then(() => addColour(6969, ".nice", "pink"))
+          .catch((err) => console.log(err));
+      });
+
+      const addColour = (time, selector, colour) => {
+        const element = document.querySelector(selector);
+        return new Promise((resolve, reject) => {
+          if (element) {
+            setTimeout(() => {
+              element.style.color = colour;
+              resolve(); // without this it will stay in pending
+            }, time);
+          } else {
+            reject(`There is no such element -> ${selector}`);
+          }
+        });
+      };
+    </script>
   </body>
 </html>
